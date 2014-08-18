@@ -1,0 +1,6 @@
+transcript
+*.log
+*.ucdb
+.projectile
+work
+.#*
