@@ -1,4 +1,4 @@
-interface dut_if #(type T = covemb_pkg::base) (input logic clk);
+interface dut_if #(type T = covuniq_pkg::base) (input logic clk);
 
     string inst_name = "";
     logic [3:0] cmd, adr, data;

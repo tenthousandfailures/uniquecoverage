@@ -10,9 +10,9 @@ class cov;
         option.per_instance = 1;
         option.get_inst_coverage = 1;   
 
-        adr : coverpoint adr {
-            option.comment = "coverpoint adr comment";
-        }
+//        adr : coverpoint adr {
+//            option.comment = "coverpoint adr comment";
+//        }
 
         cmd : coverpoint cmd {
             bins _null = {'h0};      

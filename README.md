@@ -9,8 +9,8 @@ Eldon Nelson M.S. P.E. (eldon_nelson@ieee.org)
 | ---------------------------------                                       | ----------- |
 |[svsolution/dut.sv](svsolution/dut.sv)                                   | the DUT (design under test) |
 |[svsolution/dut_if.sv](svsolution/dut_if.sv)                             | the interface for the DUT |
-|[svsolution/covemb_pkg.sv](svsolution/covemb_pkg.sv)                     | coverage class definition |
-|[svsolution/covemb_pkg_fcn.svh](svsolution/covemb_pkg_fcn.svh)           | ``include` repeated functions new() and sample() |
+|[svsolution/covuniq_pkg.sv](svsolution/covuniq_pkg.sv)                   | coverage class definition |
+|[svsolution/covuniq_pkg_fcn.svh](svsolution/covuniq_pkg_fcn.svh)         | ``include` repeated functions new() and sample() |
 |[svsolution/dut_if_cg.svh](svsolution/dut_if_cg.svh)                     | ``include` covergroup |
 |[svsolution/TB0.sv](svsolution/TB0.sv)                                   | testbench TB0 |
 |[svsolution/TB1.sv](svsolution/TB1.sv)                                   | testbench TB1 |
@@ -25,7 +25,7 @@ vsim -do "compile.do"
 
 ## UML Diagram for SystemVerilog Solution
 
-![UML Diagram for SystemVerilog Solution](svsolution/img/covemb_pkg.png)
+![UML Diagram for SystemVerilog Solution](svsolution/img/covuniq_pkg.png)
 
 ## TB Designs for SystemVerilog Solution
 

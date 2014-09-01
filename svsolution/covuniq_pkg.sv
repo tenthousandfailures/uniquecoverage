@@ -1,6 +1,6 @@
-package covemb_pkg;
+package covuniq_pkg;
 
-    string pkg_prefix = "covemb_pkg::";
+    string pkg_prefix = "covuniq_pkg::";
 
 // TODO make some type of class to subscribe these together
 virtual class proto;
@@ -20,10 +20,10 @@ endclass
 class base extends proto;
 
     string name = {pkg_prefix, "base"};
-    string comment = "covemb::base default comment";
+    string comment = "covuniq::base default comment";
 
    `include "dut_if_cg.svh"
-   `include "covemb_pkg_fcn.svh"
+   `include "covuniq_pkg_fcn.svh"
 
 endclass
 
@@ -35,7 +35,7 @@ class t_a extends base;
     string comment = "t_a comment";
 
    `include "dut_if_cg.svh"
-   `include "covemb_pkg_fcn.svh"
+   `include "covuniq_pkg_fcn.svh"
 
 endclass
 
@@ -44,7 +44,7 @@ class t_b extends base;
     string name = {pkg_prefix, "t_a"};
 
     `include "dut_if_cg.svh"
-    `include "covemb_pkg_fcn.svh"
+    `include "covuniq_pkg_fcn.svh"
 
 endclass
 
@@ -53,7 +53,7 @@ class t_c extends base;
     string name = {pkg_prefix, "t_c"};
 
     `include "dut_if_cg.svh"
-    `include "covemb_pkg_fcn.svh"
+    `include "covuniq_pkg_fcn.svh"
 
 endclass
 
@@ -62,7 +62,7 @@ class a_b extends base;
     string name = {pkg_prefix, "t_b"};
 
     `include "dut_if_cg.svh"
-    `include "covemb_pkg_fcn.svh"
+    `include "covuniq_pkg_fcn.svh"
 
 endclass
 
@@ -71,7 +71,7 @@ class b_c extends base;
     string name = {pkg_prefix, "b_c"};
 
     `include "dut_if_cg.svh"
-    `include "covemb_pkg_fcn.svh"
+    `include "covuniq_pkg_fcn.svh"
 
 endclass
 
@@ -80,7 +80,7 @@ class c extends base;
     string name = {pkg_prefix, "c"};
 
     `include "dut_if_cg.svh"
-    `include "covemb_pkg_fcn.svh"
+    `include "covuniq_pkg_fcn.svh"
 
 endclass
 

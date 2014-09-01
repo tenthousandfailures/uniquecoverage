@@ -2,7 +2,7 @@ vlib work
 # vdel -all -lib work
 vlog \
     +cover \
-    covemb_pkg.sv \
+    covuniq_pkg.sv \
     covtrad_pkg.sv \
     dut_if.sv \
     dut.sv \

@@ -2,8 +2,8 @@ module TB2 ();
 
     logic clk = 0;
 
-    dut_if #(covemb_pkg::t_c) dut_if_t_c(clk);
-    dut_if #(covemb_pkg::c) dut_if_c(clk);
+    dut_if #(covuniq_pkg::t_c) dut_if_t_c(clk);
+    dut_if #(covuniq_pkg::c) dut_if_c(clk);
 
     dut dutc(
              .slave(dut_if_t_c),
