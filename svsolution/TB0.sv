@@ -1,5 +1,9 @@
 module TB0 ();
 
+    `include "uvm_macros.svh"
+    import uvm_pkg::*;
+    import TB0_pkg::*;  
+    
     logic clk = 0;
 
     dut_if #(covuniq_pkg::t_a) dut_if_t_a(clk);
@@ -37,5 +41,16 @@ module TB0 ();
         dut_if_t_a.slave.data <= '0;
         #2000;
     end       
-    
+
+    initial begin
+        uvm_config_db#(virtual dut_if #(covuniq_pkg::t_a))::set(null,"uvm_test_top","dut_if_t_a", dut_if_t_a);       
+
+        if ($test$plusargs("UVM_TESTNAME")) begin
+            run_test();
+        end else begin
+            `uvm_info("TB0", "Not a UVM_TEST", UVM_DEBUG)
+        end
+
+    end
+   
 endmodule

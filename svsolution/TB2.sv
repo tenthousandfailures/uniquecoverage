@@ -1,5 +1,8 @@
 module TB2 ();
 
+    `include "uvm_macros.svh"
+    import uvm_pkg::*;
+    
     logic clk = 0;
 
     dut_if #(covuniq_pkg::t_c) dut_if_t_c(clk);
@@ -27,6 +30,10 @@ module TB2 ();
         dut_if_t_c.slave.data <= '0;
         #2000;
     end       
+
+    initial begin
+        uvm_config_db#(virtual dut_if #(covuniq_pkg::t_c))::set(null,"uvm_test_top","dut_if_t_c", dut_if_t_c);       
+    end
     
 endmodule
 

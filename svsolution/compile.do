@@ -6,6 +6,7 @@ vlog \
     covtrad_pkg.sv \
     dut_if.sv \
     dut.sv \
+    TB0_pkg.sv \
     TB0.sv \
     TB1.sv \
     TB2.sv
