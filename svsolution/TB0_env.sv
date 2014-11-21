@@ -3,8 +3,8 @@
 //----------------
 class TB0_env extends uvm_env;
     `uvm_component_utils(TB0_env)
-    
-    virtual  dut_if #(covuniq_pkg::t_a) dut_if_t_a;
+
+    tb_dut_if_t tb_dut_if;
         
     function new(string name, uvm_component parent = null);
         super.new(name, parent);

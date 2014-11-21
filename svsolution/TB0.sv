@@ -30,25 +30,30 @@ module TB0 ();
     end
 
     always @(posedge clk) begin
-        dut_if_t_a.slave.cmd <= 1;
-        dut_if_t_a.slave.adr <= $urandom_range(2,1);
-        dut_if_t_a.slave.data <= $urandom_range(7,0);        
+        // if not a UVM test send in the input
+        if (!$test$plusargs("UVM_TESTNAME")) begin
+            dut_if_t_a.slave.cmd <= 1;
+            dut_if_t_a.slave.adr <= $urandom_range(2,1);
+            dut_if_t_a.slave.data <= $urandom_range(7,0);        
+        end
     end
 
     initial begin
-        dut_if_t_a.slave.cmd <= '0;
-        dut_if_t_a.slave.adr <= '0;
-        dut_if_t_a.slave.data <= '0;
-        #2000;
     end       
 
     initial begin
-        uvm_config_db#(virtual dut_if #(covuniq_pkg::t_a))::set(null,"uvm_test_top","dut_if_t_a", dut_if_t_a);       
+        uvm_config_db#(tb_dut_if_t)::set(null,"uvm_test_top","tb_dut_if", dut_if_t_a);       
 
         if ($test$plusargs("UVM_TESTNAME")) begin
             run_test();
         end else begin
             `uvm_info("TB0", "Not a UVM_TEST", UVM_DEBUG)
+
+            dut_if_t_a.slave.cmd <= '0;
+            dut_if_t_a.slave.adr <= '0;
+            dut_if_t_a.slave.data <= '0;
+            #2000;
+
         end
 
     end
