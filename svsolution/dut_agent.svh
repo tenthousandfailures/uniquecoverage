@@ -9,9 +9,9 @@ class txn extends uvm_sequence_item;
 
     function void do_print(uvm_printer printer);
         super.do_print(printer);
-
-        printer.print_int("cmd  ", cmd,  $bits(cmd), UVM_DEC);
-        printer.print_int("adr  ", adr,  $bits(adr), UVM_DEC);
+        
+        printer.print_int("cmd  ", cmd,  $bits(cmd),  UVM_DEC);
+        printer.print_int("adr  ", adr,  $bits(adr),  UVM_DEC);
         printer.print_int("data ", data, $bits(data), UVM_DEC);
         
     endfunction // do_print
@@ -29,9 +29,12 @@ class dut_cov extends uvm_subscriber#(txn);
     endfunction // new
 
     function void write(txn t);
-        `uvm_info("dut_cov", $sformatf("cmd: %h adr: %h data: %h", t.cmd, t.adr, t.data), UVM_HIGH);
         
+        $display("");
+        `uvm_info("dut_cov", $sformatf("cmd: %h adr: %h data: %h", t.cmd, t.adr, t.data), UVM_HIGH);       
         t.print();
+        $display("");        
+        
     endfunction // write    
     
 endclass // dut_cov
@@ -83,8 +86,7 @@ class dut_agent extends uvm_agent;
 
     function void connect_phase(uvm_phase phase);
         dut_monitor_h.tb_dut_if = tb_dut_if;
-        dut_monitor_h.aport.connect(dut_cov_h.analysis_export);
-        
+        dut_monitor_h.aport.connect(dut_cov_h.analysis_export);        
     endfunction // connect_phase
     
     function new(string name, uvm_component parent = null);
