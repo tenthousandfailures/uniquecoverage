@@ -6,8 +6,35 @@ class txn extends uvm_sequence_item;
     function new( string name = "");
         super.new(name);
     endfunction // new       
+
+    function void do_print(uvm_printer printer);
+        super.do_print(printer);
+
+        printer.print_int("cmd  ", cmd,  $bits(cmd), UVM_DEC);
+        printer.print_int("adr  ", adr,  $bits(adr), UVM_DEC);
+        printer.print_int("data ", data, $bits(data), UVM_DEC);
+        
+    endfunction // do_print
+    
     
 endclass // txn
+
+// TODO add parameterization after dut_cov
+class dut_cov extends uvm_subscriber#(txn);
+    `uvm_component_utils(dut_cov)
+
+    function new(string name = "", uvm_component parent=null);
+        super.new(name, parent);
+        
+    endfunction // new
+
+    function void write(txn t);
+        `uvm_info("dut_cov", $sformatf("cmd: %h adr: %h data: %h", t.cmd, t.adr, t.data), UVM_HIGH);
+        
+        t.print();
+    endfunction // write    
+    
+endclass // dut_cov
 
 class dut_monitor extends uvm_component;
     `uvm_component_utils(dut_monitor)
@@ -47,13 +74,17 @@ class dut_agent extends uvm_agent;
 
     tb_dut_if_t tb_dut_if;
     dut_monitor dut_monitor_h;
+    dut_cov dut_cov_h;
         
     function void build_phase(uvm_phase phase);
         dut_monitor_h = dut_monitor::type_id::create("dut_monitor_h", this);        
+        dut_cov_h = dut_cov::type_id::create("dut_cov_h", this);        
     endfunction // build_phase
 
     function void connect_phase(uvm_phase phase);
         dut_monitor_h.tb_dut_if = tb_dut_if;
+        dut_monitor_h.aport.connect(dut_cov_h.analysis_export);
+        
     endfunction // connect_phase
     
     function new(string name, uvm_component parent = null);
