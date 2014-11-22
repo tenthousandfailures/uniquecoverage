@@ -2,6 +2,8 @@ interface dut_if #(type T = covuniq_pkg::base) (input logic clk);
 
     string inst_name = "";
     logic [3:0] cmd, adr, data;
+    logic       c;
+    
     T cov_inst;
     covtrad_pkg::cov covtrad_inst;
 
@@ -9,6 +11,12 @@ interface dut_if #(type T = covuniq_pkg::base) (input logic clk);
     modport master (input clk,
                     output cmd, adr, data);
 
+    always @(clk) begin
+        c <= clk;
+        // $display("%5t DEBUG c: %d clk: %d - %m", $realtime, c, clk);        
+    end
+    
+    
     always @(posedge clk) begin
         $display("%5t DEBUG cmd: %2d, adr: %2d, data: %2d - %m", $realtime, cmd, adr, data);
         cov_inst.sample();

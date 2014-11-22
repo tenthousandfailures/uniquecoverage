@@ -42,7 +42,7 @@ module TB0 ();
     end       
 
     initial begin
-        uvm_config_db#(tb_dut_if_t)::set(null,"uvm_test_top","tb_dut_if", dut_if_t_a);       
+        uvm_config_db#(dut_if_t_a_t)::set(null,"uvm_test_top","dut_if_t_a", dut_if_t_a);       
 
         if ($test$plusargs("UVM_TESTNAME")) begin
             run_test();

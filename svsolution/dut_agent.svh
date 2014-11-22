@@ -15,19 +15,16 @@ class txn extends uvm_sequence_item;
         printer.print_int("data ", data, $bits(data), UVM_DEC);
         
     endfunction // do_print
-    
-    
+        
 endclass // txn
 
-// TODO add parameterization after dut_cov
 class dut_cov#(type T = covuniq_pkg::base) extends uvm_subscriber#(txn);
     `uvm_component_param_utils(dut_cov#(T))
 
     logic [3:0] cmd, adr, data;
     T pass_cg;
 
-    string      pass_cg_string;
-    
+    string      pass_cg_string;   
         
     function new(string name = "", uvm_component parent=null);
         super.new(name, parent);
@@ -53,11 +50,11 @@ class dut_cov#(type T = covuniq_pkg::base) extends uvm_subscriber#(txn);
     
 endclass // dut_cov
 
-class dut_monitor extends uvm_component;
-    `uvm_component_utils(dut_monitor)
+class dut_monitor#(type T = covuniq_pkg::base) extends uvm_component;
+    `uvm_component_param_utils(dut_monitor#(T))
 
-    tb_dut_if_t tb_dut_if;
-
+    virtual dut_if#(T) tb_dut_if;
+    
     uvm_analysis_port #(txn) aport;
     
     function void build_phase(uvm_phase phase);
@@ -71,11 +68,11 @@ class dut_monitor extends uvm_component;
     task run_phase(uvm_phase phase);
         forever begin
             txn tx;
-            @(posedge tb_dut_if.slave.clk);
+            @(posedge tb_dut_if.c);
             tx = txn::type_id::create("tx");
-            tx.cmd = tb_dut_if.slave.cmd;
-            tx.adr = tb_dut_if.slave.adr;
-            tx.data = tb_dut_if.slave.data;
+            tx.cmd = tb_dut_if.cmd;
+            tx.adr = tb_dut_if.adr;
+            tx.data = tb_dut_if.data;
 
             aport.write(tx);
             `uvm_info("dut_monitor", $sformatf("cmd: %h adr: %h data: %h", tx.cmd, tx.adr, tx.data), UVM_HIGH);
@@ -89,12 +86,14 @@ endclass
 class dut_agent#(type T = covuniq_pkg::base) extends uvm_agent;
     `uvm_component_param_utils(dut_agent#(T))
 
-    tb_dut_if_t tb_dut_if;
-    dut_monitor dut_monitor_h;
+    virtual dut_if#(T) tb_dut_if;
+    // dut_if_t_a_t tb_dut_if;
+
+    dut_monitor#(T) dut_monitor_h;
     dut_cov#(T) dut_cov_h;
         
     function void build_phase(uvm_phase phase);
-        dut_monitor_h = dut_monitor::type_id::create("dut_monitor_h", this);        
+        dut_monitor_h = dut_monitor#(T)::type_id::create("dut_monitor_h", this);        
         dut_cov_h = dut_cov#(T)::type_id::create("dut_cov_h", this);        
     endfunction // build_phase
 
