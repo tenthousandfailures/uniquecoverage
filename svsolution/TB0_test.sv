@@ -17,10 +17,11 @@ class TB0_test extends uvm_test;
         if (!uvm_config_db#(tb_dut_if_t)::get(this, "", "tb_dut_if", tb_dut_if)) begin
             `uvm_fatal("TB0_test", "failed to get virtual handle to tb_dut_if")
         end
+        env_h.tb_dut_if = tb_dut_if;
+
     endfunction // build_phase
     
     function void connect_phase(uvm_phase phase);
-        env_h.tb_dut_if = tb_dut_if;
     endfunction // connect_phase
         
     virtual task main_phase(uvm_phase phase);
