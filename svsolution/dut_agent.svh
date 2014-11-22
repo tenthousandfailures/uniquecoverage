@@ -20,16 +20,30 @@ class txn extends uvm_sequence_item;
 endclass // txn
 
 // TODO add parameterization after dut_cov
-class dut_cov extends uvm_subscriber#(txn);
-    `uvm_component_utils(dut_cov)
+class dut_cov#(type T = covuniq_pkg::base) extends uvm_subscriber#(txn);
+    `uvm_component_param_utils(dut_cov#(T))
 
+    logic [3:0] cmd, adr, data;
+    T pass_cg;
+
+    string      pass_cg_string;
+    
+        
     function new(string name = "", uvm_component parent=null);
         super.new(name, parent);
+        pass_cg_string = {this.get_full_name()};
+
+        pass_cg = new(adr, cmd, pass_cg_string);
         
     endfunction // new
 
     function void write(txn t);
-        
+
+        adr = t.adr;
+        cmd = t.cmd;
+                
+        pass_cg.sample();
+                
         $display("");
         `uvm_info("dut_cov", $sformatf("cmd: %h adr: %h data: %h", t.cmd, t.adr, t.data), UVM_HIGH);       
         t.print();
@@ -72,16 +86,16 @@ class dut_monitor extends uvm_component;
 endclass
 
 
-class dut_agent extends uvm_agent;
-    `uvm_component_utils(dut_agent)
+class dut_agent#(type T = covuniq_pkg::base) extends uvm_agent;
+    `uvm_component_param_utils(dut_agent#(T))
 
     tb_dut_if_t tb_dut_if;
     dut_monitor dut_monitor_h;
-    dut_cov dut_cov_h;
+    dut_cov#(T) dut_cov_h;
         
     function void build_phase(uvm_phase phase);
         dut_monitor_h = dut_monitor::type_id::create("dut_monitor_h", this);        
-        dut_cov_h = dut_cov::type_id::create("dut_cov_h", this);        
+        dut_cov_h = dut_cov#(T)::type_id::create("dut_cov_h", this);        
     endfunction // build_phase
 
     function void connect_phase(uvm_phase phase);

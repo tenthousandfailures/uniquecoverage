@@ -5,7 +5,7 @@ class TB0_env extends uvm_env;
     `uvm_component_utils(TB0_env)
 
     tb_dut_if_t tb_dut_if;
-    dut_agent dut_agent_h;
+    dut_agent#(covuniq_pkg::t_a) dut_agent_h;
             
     function new(string name, uvm_component parent = null);
         super.new(name, parent);
@@ -13,7 +13,7 @@ class TB0_env extends uvm_env;
 
     function void build_phase(uvm_phase phase);
     
-        dut_agent_h = dut_agent::type_id::create("dut_agent_h", this);
+        dut_agent_h = dut_agent#(covuniq_pkg::t_a)::type_id::create("dut_agent_h", this);
         dut_agent_h.tb_dut_if = tb_dut_if;
         
     endfunction // build_phase
