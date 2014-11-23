@@ -16,24 +16,19 @@ class TB0_env extends uvm_env;
         dut_agent_t_a_h = dut_agent_t_a_t::type_id::create("dut_agent_t_a_h", this);
         dut_agent_t_a_h.tb_dut_if = tb_dut_if;
         
-    endfunction // build_phase
-    
+    endfunction // build_phase    
     
     function void connect_phase(uvm_phase phase);
-        `uvm_info("TB0_env", "Started connect phase.", UVM_HIGH);
-        // Get the interface from the resource database.
-        
+
+        `uvm_info("TB0_env", "Started connect phase.", UVM_HIGH);       
         `uvm_info("TB0_env", "Finished connect phase.", UVM_HIGH);
 
     endfunction: connect_phase
 
     task run_phase(uvm_phase phase);
         phase.raise_objection(this);
+
         `uvm_info("TB0_env", "Started run phase.", UVM_HIGH);
-
-        begin
-
-        end
         `uvm_info("TB0_env", "Finished run phase.", UVM_HIGH);
 
         phase.drop_objection(this);

@@ -8,11 +8,12 @@
         option.comment = {comment};
 
         option.per_instance = 1;
-        option.get_inst_coverage = 1;   
+        option.get_inst_coverage = 1;
 
-//        adr : coverpoint adr {
-//            option.comment = "coverpoint adr comment";
-//        }
+        // To illustrate this concept we don't need to cover adr
+        // adr : coverpoint adr {
+        //     option.comment = "coverpoint adr comment";
+        // }
 
         cmd : coverpoint cmd {
             bins _null = {'h0};      

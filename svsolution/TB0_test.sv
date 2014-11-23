@@ -9,7 +9,6 @@ class TB0_test extends uvm_test;
         
     function new(string name = "TB0_test", uvm_component parent = null);
         super.new(name, parent);
-        `uvm_info("STATUS", "starting test", UVM_MEDIUM)                
     endfunction
 
     function void build_phase(uvm_phase phase);
@@ -29,9 +28,9 @@ class TB0_test extends uvm_test;
         
         `uvm_info("STATUS", "starting test", UVM_MEDIUM)
 
-        for (int i=0; i<1000; i=i+1) begin
+        for (int i=0; i<40; i=i+1) begin
             @(posedge tb_dut_if.clk);
-            tb_dut_if.cmd <= 1;
+            tb_dut_if.cmd <= 'h1;
             tb_dut_if.adr <= $urandom_range(2,1);
             tb_dut_if.data <= $urandom_range(7,0);        
         end
