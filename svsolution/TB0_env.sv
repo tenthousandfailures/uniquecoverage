@@ -4,7 +4,7 @@
 class TB0_env extends uvm_env;
     `uvm_component_utils(TB0_env)
 
-    dut_if_t_a_t tb_dut_if;
+    dut_if_t_a_t dut_if_t_a;
     dut_if_a_b_t dut_if_a_b;
     dut_if_b_c_t dut_if_b_c;
     dut_if_c_t   dut_if_c;
@@ -25,7 +25,7 @@ class TB0_env extends uvm_env;
         dut_agent_b_c_h = dut_agent_b_c_t::type_id::create("dut_agent_b_c_h", this);
         dut_agent_c_h   = dut_agent_c_t::type_id::create("dut_agent_c_h", this);
 
-        dut_agent_t_a_h.tb_dut_if = tb_dut_if;
+        dut_agent_t_a_h.tb_dut_if = dut_if_t_a;
         dut_agent_a_b_h.tb_dut_if = dut_if_a_b;
         dut_agent_b_c_h.tb_dut_if = dut_if_b_c;
         dut_agent_c_h.tb_dut_if   = dut_if_c;
