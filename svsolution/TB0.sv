@@ -40,16 +40,20 @@ module TB0 ();
 
     initial begin
         uvm_config_db#(dut_if_t_a_t)::set(null,"uvm_test_top","dut_if_t_a", dut_if_t_a);       
+        uvm_config_db#(dut_if_a_b_t)::set(null,"uvm_test_top","dut_if_a_b", dut_if_a_b);       
+        uvm_config_db#(dut_if_b_c_t)::set(null,"uvm_test_top","dut_if_b_c", dut_if_b_c);       
+        uvm_config_db#(dut_if_c_t)::set(null,  "uvm_test_top","dut_if_c",   dut_if_c);       
 
+        // initial values from the testbench to the DUT
         dut_if_t_a.cmd <= 'h0;
         dut_if_t_a.adr <= 'h0;
         dut_if_t_a.data <= 'h0;
-        
+
+        // if a UVM test run it otherwise inform it is not UVM
         if ($test$plusargs("UVM_TESTNAME")) begin
             run_test();
         end else begin
-            `uvm_info("TB0", "Not a UVM_TEST", UVM_DEBUG)
-            #2000;
+            `uvm_info("TB0", "NOT a UVM_TEST", UVM_DEBUG)
         end
 
     end

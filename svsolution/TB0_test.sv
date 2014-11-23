@@ -6,6 +6,9 @@ class TB0_test extends uvm_test;
 
     TB0_pkg::TB0_env env_h;
     dut_if_t_a_t tb_dut_if;
+    dut_if_a_b_t dut_if_a_b;
+    dut_if_b_c_t dut_if_b_c;
+    dut_if_c_t   dut_if_c;
         
     function new(string name = "TB0_test", uvm_component parent = null);
         super.new(name, parent);
@@ -16,7 +19,20 @@ class TB0_test extends uvm_test;
         if (!uvm_config_db#(dut_if_t_a_t)::get(this, "", "dut_if_t_a", tb_dut_if)) begin
             `uvm_fatal("TB0_test", "failed to get virtual handle to dut_if_t_a")
         end
-        env_h.tb_dut_if = tb_dut_if;
+        if (!uvm_config_db#(dut_if_a_b_t)::get(this, "", "dut_if_a_b", dut_if_a_b)) begin
+            `uvm_fatal("TB0_test", "failed to get virtual handle to dut_if_a_b")
+        end
+        if (!uvm_config_db#(dut_if_b_c_t)::get(this, "", "dut_if_b_c", dut_if_b_c)) begin
+            `uvm_fatal("TB0_test", "failed to get virtual handle to dut_if_b_c")
+        end
+        if (!uvm_config_db#(dut_if_c_t)::get(this, "", "dut_if_c", dut_if_c)) begin
+            `uvm_fatal("TB0_test", "failed to get virtual handle to dut_if_c")
+        end      
+
+        env_h.tb_dut_if  = tb_dut_if;
+        env_h.dut_if_a_b = dut_if_a_b;
+        env_h.dut_if_b_c = dut_if_b_c;
+        env_h.dut_if_c   = dut_if_c;
 
     endfunction // build_phase
     
