@@ -23,6 +23,12 @@ cd svsolution
 vsim -do "compile.do"
 ```
 
+## Command Lines for Mentor Questa to Run for UVM Solution
+```shell
+cd svsolution
+vsim -do "compile_uvm.do"
+```
+
 ## UML Diagram for SystemVerilog Solution
 
 ![UML Diagram for SystemVerilog Solution](svsolution/img/covuniq_pkg.png)
