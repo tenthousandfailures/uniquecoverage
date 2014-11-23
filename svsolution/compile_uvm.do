@@ -12,7 +12,7 @@ vlog \
 #     TB1.sv \
 #     TB2.sv
 
-vsim -coverage -classdebug -uvmcontrol=all +UVM_TESTNAME=TB0_test +UVM_VERBOSITY=DEBUG TB0; run 2000;
+vsim -coverage -classdebug -uvmcontrol=all +TRAD_SAMPLE +NEW_SAMPLE +UVM_SAMPLE +UVM_TESTNAME=TB0_test +UVM_VERBOSITY=DEBUG TB0; run 2000;
 
 # coverage save TB0.ucdb; quit -sim
 # vsim -coverage TB1; run 2000; coverage save TB1.ucdb; quit -sim

@@ -38,9 +38,11 @@ class dut_cov#(type T = covuniq_pkg::base) extends uvm_subscriber#(txn);
 
         adr = t.adr;
         cmd = t.cmd;
-                
-        pass_cg.sample();
-                
+
+        if ($test$plusargs("UVM_SAMPLE")) begin
+            pass_cg.sample();
+        end
+        
         $display("");
         `uvm_info("dut_cov", $sformatf("cmd: %h adr: %h data: %h", t.cmd, t.adr, t.data), UVM_HIGH);       
         t.print();

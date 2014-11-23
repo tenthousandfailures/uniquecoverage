@@ -15,8 +15,15 @@ interface dut_if #(type T = covuniq_pkg::base) (input logic clk);
     
     always @(posedge clk) begin
         $display("%5t DEBUG cmd: %2d, adr: %2d, data: %2d - %m", $realtime, cmd, adr, data);
-        cov_inst.sample();
-        covtrad_inst.sample();
+
+        if ($test$plusargs("NEW_SAMPLE")) begin
+            cov_inst.sample();
+        end
+
+        if ($test$plusargs("TRAD_SAMPLE")) begin
+            covtrad_inst.sample();
+        end
+        
     end
 
     initial begin
@@ -28,12 +35,10 @@ interface dut_if #(type T = covuniq_pkg::base) (input logic clk);
                        .inst_name(inst_name)
                        );
         
-
         covtrad_inst = new(.adr(adr),
                            .cmd(cmd),
                            .inst_name(inst_name)
                            );
-
 
     end
 
