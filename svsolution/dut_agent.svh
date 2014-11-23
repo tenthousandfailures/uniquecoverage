@@ -53,7 +53,7 @@ endclass // dut_cov
 class dut_monitor#(type T = covuniq_pkg::base) extends uvm_component;
     `uvm_component_param_utils(dut_monitor#(T))
 
-    virtual dut_if#(T) tb_dut_if;
+    virtual dut_if#(T) intf;
     
     uvm_analysis_port #(txn) aport;
     
@@ -68,11 +68,11 @@ class dut_monitor#(type T = covuniq_pkg::base) extends uvm_component;
     task run_phase(uvm_phase phase);
         forever begin
             txn tx;
-            @(posedge tb_dut_if.c);
+            @(posedge intf.c);
             tx = txn::type_id::create("tx");
-            tx.cmd = tb_dut_if.cmd;
-            tx.adr = tb_dut_if.adr;
-            tx.data = tb_dut_if.data;
+            tx.cmd = intf.cmd;
+            tx.adr = intf.adr;
+            tx.data = intf.data;
 
             aport.write(tx);
             `uvm_info("dut_monitor", $sformatf("cmd: %h adr: %h data: %h", tx.cmd, tx.adr, tx.data), UVM_HIGH);
@@ -86,8 +86,8 @@ endclass
 class dut_agent#(type T = covuniq_pkg::base) extends uvm_agent;
     `uvm_component_param_utils(dut_agent#(T))
 
-    virtual dut_if#(T) tb_dut_if;
-    // dut_if_t_a_t tb_dut_if;
+    virtual dut_if#(T) intf;
+    // dut_if_t_a_t intf;
 
     dut_monitor#(T) dut_monitor_h;
     dut_cov#(T) dut_cov_h;
@@ -98,7 +98,7 @@ class dut_agent#(type T = covuniq_pkg::base) extends uvm_agent;
     endfunction // build_phase
 
     function void connect_phase(uvm_phase phase);
-        dut_monitor_h.tb_dut_if = tb_dut_if;
+        dut_monitor_h.intf = intf;
         dut_monitor_h.aport.connect(dut_cov_h.analysis_export);        
     endfunction // connect_phase
     
