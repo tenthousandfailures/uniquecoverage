@@ -21,9 +21,9 @@ endclass // txn
 class dut_cov#(type T = covuniq_pkg::base) extends uvm_subscriber#(txn);
     `uvm_component_param_utils(dut_cov#(T))
 
-    logic [3:0] cmd, adr, data;
+    logic [3:0] cmd, adr, data;        
     T pass_cg;
-
+    
     string      pass_cg_string;   
         
     function new(string name = "", uvm_component parent=null);
@@ -31,6 +31,11 @@ class dut_cov#(type T = covuniq_pkg::base) extends uvm_subscriber#(txn);
         pass_cg_string = {this.get_full_name()};
 
         pass_cg = new(adr, cmd, pass_cg_string);
+
+        if ($test$plusargs("UVM_SAMPLE")) begin
+            pass_cg.dut_if_cg.option.weight = 1;
+        end
+
         
     endfunction // new
 
@@ -39,10 +44,8 @@ class dut_cov#(type T = covuniq_pkg::base) extends uvm_subscriber#(txn);
         adr = t.adr;
         cmd = t.cmd;
 
-        if ($test$plusargs("UVM_SAMPLE")) begin
-            pass_cg.sample();
-        end
-        
+        pass_cg.sample();
+               
         $display("");
         `uvm_info("dut_cov", $sformatf("cmd: %h adr: %h data: %h", t.cmd, t.adr, t.data), UVM_HIGH);       
         t.print();
