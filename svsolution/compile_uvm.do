@@ -9,22 +9,12 @@ vlog \
     TB0_pkg.sv \
     TB0.sv \
     TB1_pkg.sv \
-    TB1.sv
-
-#     TB1.sv \
-#     TB2.sv
+    TB1.sv \
+    TB2_pkg.sv \
+    TB2.sv
 
 # vsim -coverage -classdebug -uvmcontrol=all +TRAD_SAMPLE +NEW_SAMPLE +UVM_SAMPLE +UVM_TESTNAME=TB0_test +UVM_VERBOSITY=DEBUG TB0; run 2000; quit -sim
-vsim -coverage -classdebug -uvmcontrol=all +TRAD_SAMPLE +NEW_SAMPLE +UVM_SAMPLE +UVM_TESTNAME=TB1_test +UVM_VERBOSITY=DEBUG TB1; run 2000; quit -sim
-
-# vsim -coverage -classdebug -uvmcontrol=all +UVM_TESTNAME=TB0_test +UVM_VERBOSITY=DEBUG TB0; run 2000;
-
-# coverage save TB0.ucdb; quit -sim
-# vsim -coverage TB1; run 2000; coverage save TB1.ucdb; quit -sim
-# vsim -coverage TB2; run 2000; coverage save TB2.ucdb; quit -sim
-# xml2ucdb -format Excel svsolution_testplan.xml testplan.ucdb -verbose
-# vcover merge -totals merge.ucdb TB0.ucdb TB1.ucdb TB2.ucdb testplan.ucdb
-# add testbrowser TB0.ucdb TB1.ucdb TB2.ucdb testplan.ucdb merge.ucdb
-# coverage open merge.ucdb
+# vsim -coverage -classdebug -uvmcontrol=all +TRAD_SAMPLE +NEW_SAMPLE +UVM_SAMPLE +UVM_TESTNAME=TB1_test +UVM_VERBOSITY=DEBUG TB1; run 2000; quit -sim
+vsim -coverage -classdebug -uvmcontrol=all +TRAD_SAMPLE +NEW_SAMPLE +UVM_SAMPLE +UVM_TESTNAME=TB2_test +UVM_VERBOSITY=DEBUG TB2; run 2000; quit -sim
 
 

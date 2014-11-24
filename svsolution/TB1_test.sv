@@ -6,7 +6,6 @@ class TB1_test extends uvm_test;
 
     TB1_pkg::TB1_env env_h;
     dut_if_t_b_t dut_if_t_b;
-    dut_if_a_b_t dut_if_a_b;
     dut_if_b_c_t dut_if_b_c;
     dut_if_c_t   dut_if_c;
         
@@ -43,8 +42,8 @@ class TB1_test extends uvm_test;
 
         for (int i=0; i<40; i=i+1) begin
             @(posedge dut_if_t_b.clk);
-            dut_if_t_b.cmd <= 'h1;
-            dut_if_t_b.adr <= $urandom_range(2,1);
+            dut_if_t_b.cmd <= 'h2;
+            dut_if_t_b.adr <= $urandom_range(4,3);
             dut_if_t_b.data <= $urandom_range(7,0);        
         end
         

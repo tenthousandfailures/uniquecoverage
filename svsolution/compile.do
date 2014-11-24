@@ -8,8 +8,11 @@ vlog \
     dut.sv \
     TB0_pkg.sv \
     TB0.sv \
+    TB1_pkg.sv \
     TB1.sv \
+    TB2_pkg.sv \
     TB2.sv
+
 vsim +TRAD_SAMPLE +NEW_SAMPLE -coverage TB0; run 2000; coverage save TB0.ucdb; quit -sim
 vsim +TRAD_SAMPLE +NEW_SAMPLE -coverage TB1; run 2000; coverage save TB1.ucdb; quit -sim
 vsim +TRAD_SAMPLE +NEW_SAMPLE -coverage TB2; run 2000; coverage save TB2.ucdb; quit -sim
