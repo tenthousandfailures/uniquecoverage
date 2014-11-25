@@ -1,4 +1,4 @@
-interface dut_if #(type T = covuniq_pkg::base) (input logic clk);
+interface dut_if #(type T = uniq_pkg::base) (input logic clk);
 
     string inst_name = "";
     logic [3:0] cmd, adr, data;
@@ -6,7 +6,7 @@ interface dut_if #(type T = covuniq_pkg::base) (input logic clk);
     int         weight = 0;
         
     T cov_inst;
-    covtrad_pkg::cov covtrad_inst;
+    trad_pkg::cov trad_inst;
 
     modport slave (input clk, cmd, adr, data);
     modport master (input clk,
@@ -18,7 +18,7 @@ interface dut_if #(type T = covuniq_pkg::base) (input logic clk);
         $display("%5t DEBUG cmd: %2d, adr: %2d, data: %2d - %m", $realtime, cmd, adr, data);
 
         cov_inst.sample();
-        covtrad_inst.sample();
+        trad_inst.sample();
         
     end
 
@@ -29,7 +29,7 @@ interface dut_if #(type T = covuniq_pkg::base) (input logic clk);
                        .inst_name(inst_name)
                        );
         
-        covtrad_inst = new(.adr(adr),
+        trad_inst = new(.adr(adr),
                            .cmd(cmd),
                            .inst_name(inst_name)
                            );
@@ -42,7 +42,7 @@ interface dut_if #(type T = covuniq_pkg::base) (input logic clk);
         end
 
         if ($test$plusargs("TRAD_SAMPLE")) begin
-            covtrad_inst.dut_if_cg.option.weight = 1;
+            trad_inst.dut_if_cg.option.weight = 1;
         end
         
     end

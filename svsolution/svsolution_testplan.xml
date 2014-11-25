@@ -212,7 +212,7 @@
     <Cell ss:Index="2" ss:StyleID="s86"><Data ss:Type="String" x:Ticked="1">1.2</Data></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">cmd coverpoint for interface b_c</Data></Cell>
     <Cell ss:StyleID="s95"><Data ss:Type="String">specifying each instances of the covergroup from TB0 and TB1</Data></Cell>
-    <Cell ss:StyleID="s101"><Data ss:Type="String">/covtrad_pkg/cov/dut_if_cg,TB0.dut_if_b_c:cmd&#10;/covtrad_pkg/cov/dut_if_cg,TB1.dut_if_b_c:cmd</Data></Cell>
+    <Cell ss:StyleID="s101"><Data ss:Type="String">/trad_pkg/cov/dut_if_cg,TB0.dut_if_b_c:cmd&#10;/trad_pkg/cov/dut_if_cg,TB1.dut_if_b_c:cmd</Data></Cell>
     <Cell ss:StyleID="s102"><Data ss:Type="String">CoverPoint</Data></Cell>
     <Cell ss:StyleID="s103"><Data ss:Type="Number">1</Data></Cell>
     <Cell ss:StyleID="s102"><Data ss:Type="Number">100</Data></Cell>
@@ -221,7 +221,7 @@
     <Cell ss:Index="2" ss:StyleID="s86"><Data ss:Type="String" x:Ticked="1">1.4</Data></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">covergroup type traditional</Data></Cell>
     <Cell ss:StyleID="s95"><Data ss:Type="String">the meaning of this covergroup doesn't make all that much sense since it is the combination of all interfaces</Data></Cell>
-    <Cell ss:StyleID="s98"><Data ss:Type="String">/covtrad_pkg/cov/dut_if_cg</Data></Cell>
+    <Cell ss:StyleID="s98"><Data ss:Type="String">/trad_pkg/cov/dut_if_cg</Data></Cell>
     <Cell ss:StyleID="s86"><Data ss:Type="String">CoverGroup</Data></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="Number">1</Data></Cell>
     <Cell ss:StyleID="s86"><Data ss:Type="Number">100</Data></Cell>
@@ -230,7 +230,7 @@
     <Cell ss:Index="2" ss:StyleID="s86"><Data ss:Type="String" x:Ticked="1">1.5</Data></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">covergroups for interface b_c</Data></Cell>
     <Cell ss:StyleID="s95"><Data ss:Type="String">listing each interace interface is fragile and easily misses combinations</Data></Cell>
-    <Cell ss:StyleID="s98"><Data ss:Type="String">/covtrad_pkg/cov/dut_if_cg,TB0.dut_if_b_c&#10;/covtrad_pkg/cov/dut_if_cg,TB1.dut_if_b_c</Data></Cell>
+    <Cell ss:StyleID="s98"><Data ss:Type="String">/trad_pkg/cov/dut_if_cg,TB0.dut_if_b_c&#10;/trad_pkg/cov/dut_if_cg,TB1.dut_if_b_c</Data></Cell>
     <Cell ss:StyleID="s86"><Data ss:Type="String">CoverGroup</Data></Cell>
     <Cell ss:StyleID="s103"><Data ss:Type="Number">1</Data></Cell>
     <Cell ss:StyleID="s102"><Data ss:Type="Number">100</Data></Cell>
@@ -239,7 +239,7 @@
     <Cell ss:Index="2" ss:StyleID="s86"><Data ss:Type="String" x:Ticked="1">1.6</Data></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">covergroups for interface b_c alternative method</Data></Cell>
     <Cell ss:StyleID="s95"><Data ss:Type="String">a wild card helps, but it still is a fragile construct outside of the source code. The other problem is that the merge method here is now only weighted average; union merge is not available even when that makes more sense for this application</Data></Cell>
-    <Cell ss:StyleID="s98"><Data ss:Type="String">/covtrad_pkg/cov/dut_if_cg,*.dut_if_b_c</Data></Cell>
+    <Cell ss:StyleID="s98"><Data ss:Type="String">/trad_pkg/cov/dut_if_cg,*.dut_if_b_c</Data></Cell>
     <Cell ss:StyleID="s86"><Data ss:Type="String">CoverGroup</Data></Cell>
     <Cell ss:StyleID="s103"><Data ss:Type="Number">1</Data></Cell>
     <Cell ss:StyleID="s102"><Data ss:Type="Number">100</Data></Cell>
@@ -257,7 +257,7 @@
     <Cell ss:Index="2" ss:StyleID="s86"><Data ss:Type="String" x:Ticked="1">2.1</Data></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">cmd coverpoint for interface b_c</Data></Cell>
     <Cell ss:StyleID="s95"><Data ss:Type="String">a merged covergroup for this coverpoint may make more sense in this appliction</Data></Cell>
-    <Cell ss:StyleID="s101"><Data ss:Type="String">/covuniq_pkg/b_c/dut_if_cg:cmd</Data></Cell>
+    <Cell ss:StyleID="s101"><Data ss:Type="String">/uniq_pkg/b_c/dut_if_cg:cmd</Data></Cell>
     <Cell ss:StyleID="s102"><Data ss:Type="String">CoverPoint</Data></Cell>
     <Cell ss:StyleID="s103"><Data ss:Type="Number">1</Data></Cell>
     <Cell ss:StyleID="s102"><Data ss:Type="Number">100</Data></Cell>
@@ -266,7 +266,7 @@
     <Cell ss:Index="2" ss:StyleID="s86"><Data ss:Type="String" x:Ticked="1">2.2</Data></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">covergroup type proposed</Data></Cell>
     <Cell ss:StyleID="s95"><Data ss:Type="String">the type of the covergroup is unique</Data></Cell>
-    <Cell ss:StyleID="s101"><Data ss:Type="String">/covuniq_pkg/b_c/dut_if_cg</Data></Cell>
+    <Cell ss:StyleID="s101"><Data ss:Type="String">/uniq_pkg/b_c/dut_if_cg</Data></Cell>
     <Cell ss:StyleID="s102"><Data ss:Type="String">CoverGroup</Data></Cell>
     <Cell ss:StyleID="s103"><Data ss:Type="Number">1</Data></Cell>
     <Cell ss:StyleID="s102"><Data ss:Type="Number">100</Data></Cell>
@@ -275,7 +275,7 @@
     <Cell ss:Index="2" ss:StyleID="s86"><Data ss:Type="String" x:Ticked="1">2.3</Data></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">covergroup for interface b_c</Data></Cell>
     <Cell ss:StyleID="s95"><Data ss:Type="String">since we are interested in the b_c interface we can see either the union or weighed merge depending on how the code was done - here union merge</Data></Cell>
-    <Cell ss:StyleID="s101"><Data ss:Type="String">/covuniq_pkg/b_c/dut_if_cg</Data></Cell>
+    <Cell ss:StyleID="s101"><Data ss:Type="String">/uniq_pkg/b_c/dut_if_cg</Data></Cell>
     <Cell ss:StyleID="s102"><Data ss:Type="String">CoverGroup</Data></Cell>
     <Cell ss:StyleID="s103"><Data ss:Type="Number">1</Data></Cell>
     <Cell ss:StyleID="s102"><Data ss:Type="Number">100</Data></Cell>
@@ -284,7 +284,7 @@
     <Cell ss:Index="2" ss:StyleID="s86"><Data ss:Type="String" x:Ticked="1">2.4</Data></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">covergroup for interface c</Data></Cell>
     <Cell ss:StyleID="s95"><Data ss:Type="String">compare to &quot;covergroups for interface c&quot; to see how much more succient this method is</Data></Cell>
-    <Cell ss:StyleID="s98"><Data ss:Type="String">/covuniq_pkg/c/dut_if_cg</Data></Cell>
+    <Cell ss:StyleID="s98"><Data ss:Type="String">/uniq_pkg/c/dut_if_cg</Data></Cell>
     <Cell ss:StyleID="s102"><Data ss:Type="String">CoverGroup</Data></Cell>
     <Cell ss:StyleID="s103"><Data ss:Type="Number">1</Data></Cell>
     <Cell ss:StyleID="s102"><Data ss:Type="Number">100</Data></Cell>
@@ -293,7 +293,7 @@
     <Cell ss:Index="2" ss:StyleID="s86"><Data ss:Type="String" x:Ticked="1">2.5</Data></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">covergroup base type</Data></Cell>
     <Cell ss:StyleID="s95"><Data ss:Type="String">since a base class was used we still have access to the same data that is coverged in &quot;covergroup type traditional&quot;</Data></Cell>
-    <Cell ss:StyleID="s101"><Data ss:Type="String">/covuniq_pkg/base/dut_if_cg</Data></Cell>
+    <Cell ss:StyleID="s101"><Data ss:Type="String">/uniq_pkg/base/dut_if_cg</Data></Cell>
     <Cell ss:StyleID="s102"><Data ss:Type="String">CoverGroup</Data></Cell>
     <Cell ss:StyleID="s103"><Data ss:Type="Number">1</Data></Cell>
     <Cell ss:StyleID="s102"><Data ss:Type="Number">100</Data></Cell>

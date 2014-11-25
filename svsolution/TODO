@@ -1,14 +1,14 @@
 if t_c is the same as b_c should they be the same thing? yes that does work see below diff to make it happen
 
 --- a/svsolution/TB2.sv
--    dut_if #(covuniq_pkg::t_c) dut_if_t_c(clk);
-+    dut_if #(covuniq_pkg::b_c) dut_if_t_c(clk);
+-    dut_if #(uniq_pkg::t_c) dut_if_t_c(clk);
++    dut_if #(uniq_pkg::b_c) dut_if_t_c(clk);
 
 --- a/svsolution/TB2_pkg.sv
--    typedef dut_agent #(covuniq_pkg::t_c) dut_agent_t_c_t;
-+    typedef dut_agent #(covuniq_pkg::b_c) dut_agent_t_c_t;
+-    typedef dut_agent #(uniq_pkg::t_c) dut_agent_t_c_t;
++    typedef dut_agent #(uniq_pkg::b_c) dut_agent_t_c_t;
 
 --- a/svsolution/TB_common.svh
--    typedef virtual dut_if #(covuniq_pkg::t_c) dut_if_t_c_t;
-+    typedef virtual dut_if #(covuniq_pkg::b_c) dut_if_t_c_t;
+-    typedef virtual dut_if #(uniq_pkg::t_c) dut_if_t_c_t;
++    typedef virtual dut_if #(uniq_pkg::b_c) dut_if_t_c_t;
  

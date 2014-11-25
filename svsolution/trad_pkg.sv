@@ -1,4 +1,4 @@
-package covtrad_pkg;
+package trad_pkg;
 
 class cov;
 

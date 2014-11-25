@@ -18,7 +18,7 @@ class txn extends uvm_sequence_item;
         
 endclass // txn
 
-class dut_cov#(type T = covuniq_pkg::base) extends uvm_subscriber#(txn);
+class dut_cov#(type T = uniq_pkg::base) extends uvm_subscriber#(txn);
     `uvm_component_param_utils(dut_cov#(T))
 
     logic [3:0] cmd, adr, data;        
@@ -55,7 +55,7 @@ class dut_cov#(type T = covuniq_pkg::base) extends uvm_subscriber#(txn);
     
 endclass // dut_cov
 
-class dut_monitor#(type T = covuniq_pkg::base) extends uvm_component;
+class dut_monitor#(type T = uniq_pkg::base) extends uvm_component;
     `uvm_component_param_utils(dut_monitor#(T))
 
     virtual dut_if#(T) intf;
@@ -88,7 +88,7 @@ class dut_monitor#(type T = covuniq_pkg::base) extends uvm_component;
 endclass
 
 
-class dut_agent#(type T = covuniq_pkg::base) extends uvm_agent;
+class dut_agent#(type T = uniq_pkg::base) extends uvm_agent;
     `uvm_component_param_utils(dut_agent#(T))
 
     virtual dut_if#(T) intf;

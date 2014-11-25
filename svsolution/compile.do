@@ -2,8 +2,8 @@ vlib work
 # vdel -all -lib work
 vlog \
     +cover \
-    covuniq_pkg.sv \
-    covtrad_pkg.sv \
+    uniq_pkg.sv \
+    trad_pkg.sv \
     dut_if.sv \
     dut.sv \
     TB0_pkg.sv \

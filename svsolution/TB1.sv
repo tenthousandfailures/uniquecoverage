@@ -5,9 +5,9 @@ module TB1 ();
         
     logic clk = 0;
 
-    dut_if #(covuniq_pkg::t_b) dut_if_t_b(clk);
-    dut_if #(covuniq_pkg::b_c) dut_if_b_c(clk);
-    dut_if #(covuniq_pkg::c) dut_if_c(clk);
+    dut_if #(uniq_pkg::t_b) dut_if_t_b(clk);
+    dut_if #(uniq_pkg::b_c) dut_if_b_c(clk);
+    dut_if #(uniq_pkg::c) dut_if_c(clk);
 
     dut dutb(
              .slave(dut_if_t_b),
