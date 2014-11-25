@@ -5,3 +5,6 @@ transcript
 work
 .#*
 /svsolution/certe_dump.xml
+/svsolution/vsim_stacktrace.vstf
+/svsolution/vsim.wlf
+/svsolution/diff.diff
