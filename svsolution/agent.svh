@@ -18,8 +18,8 @@ class txn extends uvm_sequence_item;
         
 endclass // txn
 
-class dut_cov#(type T = uniq_pkg::base) extends uvm_subscriber#(txn);
-    `uvm_component_param_utils(dut_cov#(T))
+class cov#(type T = uniq_pkg::base) extends uvm_subscriber#(txn);
+    `uvm_component_param_utils(cov#(T))
 
     logic [3:0] cmd, adr, data;        
     T pass_cg;
@@ -47,16 +47,16 @@ class dut_cov#(type T = uniq_pkg::base) extends uvm_subscriber#(txn);
         pass_cg.sample();
                
         $display("");
-        `uvm_info("dut_cov", $sformatf("cmd: %h adr: %h data: %h", t.cmd, t.adr, t.data), UVM_HIGH);       
+        `uvm_info("cov", $sformatf("cmd: %h adr: %h data: %h", t.cmd, t.adr, t.data), UVM_HIGH);       
         t.print();
         $display("");        
         
     endfunction // write    
     
-endclass // dut_cov
+endclass // cov
 
-class dut_monitor#(type T = uniq_pkg::base) extends uvm_component;
-    `uvm_component_param_utils(dut_monitor#(T))
+class monitor#(type T = uniq_pkg::base) extends uvm_component;
+    `uvm_component_param_utils(monitor#(T))
 
     virtual dut_if#(T) intf;
     
@@ -80,7 +80,7 @@ class dut_monitor#(type T = uniq_pkg::base) extends uvm_component;
             tx.data = intf.data;
 
             aport.write(tx);
-            `uvm_info("dut_monitor", $sformatf("cmd: %h adr: %h data: %h", tx.cmd, tx.adr, tx.data), UVM_HIGH);
+            `uvm_info("monitor", $sformatf("cmd: %h adr: %h data: %h", tx.cmd, tx.adr, tx.data), UVM_HIGH);
             
         end
     endtask // run_phase
@@ -88,27 +88,27 @@ class dut_monitor#(type T = uniq_pkg::base) extends uvm_component;
 endclass
 
 
-class dut_agent#(type T = uniq_pkg::base) extends uvm_agent;
-    `uvm_component_param_utils(dut_agent#(T))
+class agent#(type T = uniq_pkg::base) extends uvm_agent;
+    `uvm_component_param_utils(agent#(T))
 
     virtual dut_if#(T) intf;
     // dut_if_t_a_t intf;
 
-    dut_monitor#(T) dut_monitor_h;
-    dut_cov#(T) dut_cov_h;
+    monitor#(T) monitor_h;
+    cov#(T) cov_h;
         
     function void build_phase(uvm_phase phase);
-        dut_monitor_h = dut_monitor#(T)::type_id::create("dut_monitor_h", this);        
-        dut_cov_h = dut_cov#(T)::type_id::create("dut_cov_h", this);        
+        monitor_h = monitor#(T)::type_id::create("monitor_h", this);        
+        cov_h = cov#(T)::type_id::create("cov_h", this);        
     endfunction // build_phase
 
     function void connect_phase(uvm_phase phase);
-        dut_monitor_h.intf = intf;
-        dut_monitor_h.aport.connect(dut_cov_h.analysis_export);        
+        monitor_h.intf = intf;
+        monitor_h.aport.connect(cov_h.analysis_export);        
     endfunction // connect_phase
     
     function new(string name, uvm_component parent = null);
         super.new(name, parent);
     endfunction // new
     
-endclass // dut_agent
+endclass // agent

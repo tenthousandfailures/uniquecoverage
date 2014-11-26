@@ -6,4 +6,4 @@
     typedef virtual dut_if #(uniq_pkg::b_c) dut_if_b_c_t;
     typedef virtual dut_if #(uniq_pkg::c) dut_if_c_t;
         
-    `include "dut_agent.svh"
+    `include "agent.svh"
