@@ -4,9 +4,16 @@ interface dut_if #(type T = uniq_pkg::base) (input logic clk);
     logic [3:0] cmd, adr, data;
     logic       c;
     int         weight = 0;
-        
-    T cov_inst;
-    trad_pkg::cov trad_inst;
+
+    string      name = "trad_emb";
+    string      trad_emb_comment = "trad_emb comment";
+    string      trad_emb_inst_name = "inst";
+
+    `include "dut_if_cg.svh"
+
+    dut_if_cg trad_emb_inst; // embedded covergroup
+    trad_pkg::cov trad_inst; // class instantance containing covergroup   
+    T cov_inst;              // parameterized unique class containing covergroup
 
     modport slave (input clk, cmd, adr, data);
     modport master (input clk,
@@ -19,7 +26,8 @@ interface dut_if #(type T = uniq_pkg::base) (input logic clk);
 
         cov_inst.sample();
         trad_inst.sample();
-        
+        trad_emb_inst.sample();
+                
     end
 
     initial begin
@@ -30,10 +38,16 @@ interface dut_if #(type T = uniq_pkg::base) (input logic clk);
                        );
         
         trad_inst = new(.adr(adr),
-                           .cmd(cmd),
-                           .inst_name(inst_name)
-                           );
+                        .cmd(cmd),
+                        .inst_name(inst_name)
+                        );
 
+        trad_emb_inst = new(.adr(adr),
+                            .cmd(cmd),
+                            .inst_name(inst_name),
+                            .comment(trad_emb_comment)
+                            );
+        
         // set the weights to 1 if sampling is turned on
         // use Questa filters to exclude weights eq 0
         // weight cvginst ne 0
@@ -43,6 +57,7 @@ interface dut_if #(type T = uniq_pkg::base) (input logic clk);
 
         if ($test$plusargs("TRAD_SAMPLE")) begin
             trad_inst.dut_if_cg.option.weight = 1;
+            trad_emb_inst.option.weight = 1;
         end
         
     end
