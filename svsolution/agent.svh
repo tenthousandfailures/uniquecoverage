@@ -30,12 +30,8 @@ class cov#(type T = uniq_pkg::base) extends uvm_subscriber#(txn);
         super.new(name, parent);
         pass_cg_string = {this.get_full_name()};
 
+        // TODO PASS IN THE WEIGHT HERE to get around hierarchial references if desired
         pass_cg = new(adr, cmd, pass_cg_string);
-
-        if ($test$plusargs("UVM_SAMPLE")) begin
-            pass_cg.dut_if_cg.option.weight = 1;
-        end
-
         
     endfunction // new
 

@@ -47,19 +47,7 @@ interface dut_if #(type T = uniq_pkg::base) (input logic clk);
                             .inst_name(inst_name),
                             .comment(trad_emb_comment)
                             );
-        
-        // set the weights to 1 if sampling is turned on
-        // use Questa filters to exclude weights eq 0
-        // weight cvginst ne 0
-        if ($test$plusargs("NEW_SAMPLE")) begin
-            cov_inst.dut_if_cg.option.weight = 1;
-        end
 
-        if ($test$plusargs("TRAD_SAMPLE")) begin
-            trad_inst.dut_if_cg.option.weight = 1;
-            trad_emb_inst.option.weight = 1;
-        end
-        
     end
 
 endinterface
