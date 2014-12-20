@@ -23,6 +23,12 @@ cd svsolution
 vsim -do "compile.do"
 ```
 
+## Command Lines for Cadence Incisive to run for SystemVerilog Solution
+```shell
+cd svsolution
+./compile_cadence.sh
+```
+
 ## Command Lines for Mentor Questa to Run for UVM Solution
 ```shell
 cd svsolution
