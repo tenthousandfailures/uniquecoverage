@@ -26,7 +26,7 @@ covergroup dut_if_cg (ref logic [3:0] adr, ref logic [3:0] cmd, input string ins
     //   (`include file: dut_if_cg.svh line 26, file: uniq_pkg.sv line 25)
     // option.get_inst_coverage = 1;
         
-    cmd_cp : coverpoint cmd {
+    coverpoint cmd {
         bins _null = {'h0};      
         bins _read = {'h1};
         bins _write = {'h2};
