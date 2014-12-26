@@ -6,17 +6,14 @@ irun \
     -quiet \
     +define+UVM_OBJECT_MUST_HAVE_CONSTRUCTOR \
     uniq_pkg.sv \
-    trad_pkg.sv \
+    emb_pkg.sv \
     dut_if.sv \
     dut.sv \
     TB0_pkg.sv \
     TB0.sv \
     -svseed random \
     +UVM_VERBOSITY=UVM_DEBUG \
-    +UVM_TESTNAME=TB0_test \
-    +TRAD_SAMPLE \
-    +NEW_SAMPLE \
-    +UVM_SAMPLE
+    +UVM_TESTNAME=TB0_test
 
 # SV TB
 # -covtest TB0 \

@@ -1,8 +1,8 @@
-package trad_pkg;
+package emb_pkg;
 
 class cov;
 
-    string name = "trad_pkg";
+    string name = "emb_pkg";
         
     `include "dut_if_cg.svh"
    
@@ -11,7 +11,7 @@ class cov;
         dut_if_cg = new(.adr(adr),
                         .cmd(cmd),
                         .inst_name(inst_name),
-                        .comment("traditional covergroup in a class")
+                        .comment("embedded covergroup")
                         );
     endfunction
 
