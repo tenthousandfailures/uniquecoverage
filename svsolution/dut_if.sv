@@ -5,7 +5,7 @@ interface dut_if #(type T = uniq_pkg::base) (input logic clk);
     logic       c;
     int         weight = 0;
 
-    string      name = "emb";
+    string      name = "simple";
     string      emb_comment = "emb comment";
     string      simple_comment = "simple comment";
 
