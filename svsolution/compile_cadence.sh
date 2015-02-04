@@ -53,14 +53,7 @@ irun \
 
 # imc -batch
 imc -exec imc_merge.tcl
-imc -execcmd "load ./cov_work/scope/m1"
+imc -load ./cov_work/scope/m1
 
-# SV TB
-# -covtest TB0 \
-
-# UVM will add seed to covtest
-# SV version use
-#     TB1_pkg.sv \
-#     TB1.sv \
-#     TB2_pkg.sv \
-#     TB2.sv
+# If using just the SystemVerilog TB and not UVM using the following
+# -covtest TB0
