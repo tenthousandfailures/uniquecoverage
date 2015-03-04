@@ -23,7 +23,7 @@ cd svsolution
 vsim -do "compile.do"
 ```
 
-## Command Lines for Cadence Incisive to run for SystemVerilog Solution
+## Command Lines for Cadence Incisive to run for UVM Solution
 ```shell
 cd svsolution
 ./compile_cadence.sh
@@ -43,7 +43,7 @@ vsim -do "compile_uvm.do"
 
 ## UML Diagram for SystemVerilog Solution
 
-![UML Diagram for SystemVerilog Solution](svsolution/img/uniq_pkg.png)
+![UML Diagram for SystemVerilog Solution](svsolution/img/covuniq_pkg.png)
 
 ## TB Designs for SystemVerilog Solution
 
