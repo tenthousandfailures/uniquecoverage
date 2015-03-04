@@ -29,6 +29,12 @@ cd svsolution
 ./compile_cadence.sh
 ```
 
+## Command Lines for Synopsys VCS to run for SystemVerilog Solution
+```
+cd svsolution
+./snps.sh
+```
+
 ## Command Lines for Mentor Questa to Run for UVM Solution
 ```shell
 cd svsolution
