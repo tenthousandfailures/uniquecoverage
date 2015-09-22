@@ -12,7 +12,7 @@ interface dut_if #(type T = uniq_pkg::base) (input logic clk);
     
     `include "dut_if_cg.svh"
 
-    dut_if_cg simple_inst; // embedded covergroup
+    dut_if_cg simple_inst;  // simple covergroup
     emb_pkg::cov emb_inst;  // class instantance containing covergroup   
     T cov_inst;              // parameterized unique class containing covergroup
 
